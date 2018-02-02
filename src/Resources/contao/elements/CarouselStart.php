@@ -1,14 +1,21 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: Marko
- * Date: 01.02.2018
- * Time: 16:58
+ * Bootstrap Carousel Bundle for Contao CMS
+ *
+ * Copyright (C) 2005-2018 Marko Cupic
+ *
+ * @package Bootstrap Carousel Bundle
+ * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
+ *
  */
 
 namespace Markocupic\BootstrapCarousel;
 
-
+/**
+ * Class CarouselStart
+ * @package Markocupic\BootstrapCarousel
+ */
 class CarouselStart extends Carousel
 {
 
@@ -19,6 +26,9 @@ class CarouselStart extends Carousel
      */
     protected $strTemplate = 'ce_bootstrapCarouselStart';
 
+    /**
+     * @return string
+     */
     public function generate()
     {
         if (TL_MODE == 'BE')
@@ -53,12 +63,5 @@ class CarouselStart extends Carousel
         $this->Template->carouselReactToKeyboard = $this->carouselReactToKeyboard ? 'true' : 'false';
         $this->Template->carouselPauseOnHover = $this->carouselPauseOnHover ? 'hover' : 'false';
         $this->Template->carouselInfiniteCycle = $this->carouselInfiniteCycle ? 'true' : 'false';
-
-
-        // Slider configuration
-        //$this->Template->config = $this->sliderDelay . ',' . $this->sliderSpeed . ',' . $this->sliderStartSlide . ',' . $this->sliderContinuous;
     }
-
-
-
 }

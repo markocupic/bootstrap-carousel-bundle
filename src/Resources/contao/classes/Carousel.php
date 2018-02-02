@@ -1,21 +1,58 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: Marko
- * Date: 01.02.2018
- * Time: 16:58
+ * Bootstrap Carousel Bundle for Contao CMS
+ *
+ * Copyright (C) 2005-2018 Marko Cupic
+ *
+ * @package Bootstrap Carousel Bundle
+ * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
+ *
  */
 
 namespace Markocupic\BootstrapCarousel;
 
-
+/**
+ * Class Carousel
+ * @package Markocupic\BootstrapCarousel
+ */
 abstract class Carousel extends \ContentElement
 {
-
+    /**
+     * @var string
+     */
     protected static $START = 'bootstrapCarouselStart';
+
+    /**
+     * @var string
+     */
     protected static $SEPARATOR = 'bootstrapCarouselSeparator';
+
+    /**
+     * @var string
+     */
     protected static $STOP = 'bootstrapCarouselStop';
+
+    /**
+     * @var string
+     */
     protected static $IDENTIFIER = 'BootstrapCarousel%s';
+
+    /**
+     * @param $objContent
+     * @return int
+     */
+    protected function countItems($objContent)
+    {
+
+        $objSeparators = $this->getRelatedSeparators($objContent);
+        if ($objSeparators !== null)
+        {
+            return count($objSeparators) + 1;
+        }
+        return 1;
+
+    }
 
     /**
      * @param $objContent
@@ -92,20 +129,8 @@ abstract class Carousel extends \ContentElement
 
     /**
      * @param $objContent
-     * @return int
+     * @return int|null
      */
-    protected function countItems($objContent)
-    {
-
-        $objSeparators = $this->getRelatedSeparators($objContent);
-        if ($objSeparators !== null)
-        {
-            return count($objSeparators) + 1;
-        }
-        return 1;
-
-    }
-
     protected function getCarouselId($objContent)
     {
         $objStart = $this->getRelatedStart($objContent);

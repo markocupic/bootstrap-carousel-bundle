@@ -1,10 +1,12 @@
 <?php
 
 /**
- * @package    bootstrap-carousel
- * @author     Marko Cupic <m.cupic@gmx.ch>
- * @copyright  Marko Cupic 2018
- * @license    MIT
+ * Bootstrap Carousel Bundle for Contao CMS
+ *
+ * Copyright (C) 2005-2018 Marko Cupic
+ *
+ * @package Bootstrap Carousel Bundle
+ * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
  *
  */
 

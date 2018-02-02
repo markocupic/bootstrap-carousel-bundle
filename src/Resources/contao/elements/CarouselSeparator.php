@@ -1,14 +1,21 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: Marko
- * Date: 01.02.2018
- * Time: 16:58
+ * Bootstrap Carousel Bundle for Contao CMS
+ *
+ * Copyright (C) 2005-2018 Marko Cupic
+ *
+ * @package Bootstrap Carousel Bundle
+ * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
+ *
  */
 
 namespace Markocupic\BootstrapCarousel;
 
-
+/**
+ * Class CarouselSeparator
+ * @package Markocupic\BootstrapCarousel
+ */
 class CarouselSeparator extends Carousel
 {
 
@@ -18,6 +25,9 @@ class CarouselSeparator extends Carousel
      */
     protected $strTemplate = 'ce_bootstrapCarouselSeparator';
 
+    /**
+     * @return string
+     */
     public function generate()
     {
         if (TL_MODE == 'BE')

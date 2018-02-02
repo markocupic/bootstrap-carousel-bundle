@@ -1,14 +1,13 @@
-            </div>
-        </div>
-  <?php if($this->start->carouselAddControls): ?>
-        <a class="carousel-control-prev" href="#<?= $this->identifier ?>" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only"><?= $this->carouselPrevious ?></span>
-        </a>
-        <a class="carousel-control-next" href="#<?= $this->identifier ?>" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only"><?= $this->carouselNext ?></span>
-        </a>
-  <?php endif; ?>
-
+    </div>
+  </div>
+<?php if($this->start->carouselAddControls): ?>
+  <a class="carousel-control-prev" href="#<?= $this->identifier ?>" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only"><?= $this->carouselPrevious ?></span>
+  </a>
+  <a class="carousel-control-next" href="#<?= $this->identifier ?>" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only"><?= $this->carouselNext ?></span>
+  </a>
+<?php endif; ?>
 </div>

@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Bootstrap Carousel Bundle for Contao CMS
+ *
+ * Copyright (C) 2005-2018 Marko Cupic
+ *
+ * @package Bootstrap Carousel Bundle
+ * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
+ *
+ */
+
 $GLOBALS['TL_LANG']['tl_content']['carouselAddIndicators'][0] = 'Show indicators';
 $GLOBALS['TL_LANG']['tl_content']['carouselAddIndicators'][1] = 'Indicators of the current slider element will be displayed';
 
