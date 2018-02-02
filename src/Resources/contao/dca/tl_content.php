@@ -11,10 +11,9 @@
 /*
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselStart'] = '{type_legend},type,headline;{slider_legend},carouselAddIndicators,carouselAddControls,carouselAutoplay,carouselInterval,carouselReactToKeyboard,carouselPauseOnHover,carouselInfiniteCycle;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselStart'] = '{type_legend},type;{slider_legend},carouselAddIndicators,carouselAddControls,carouselAutoplay,carouselReactToKeyboard,carouselPauseOnHover,carouselInfiniteCycle,carouselInterval;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselSeparator'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselStop'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
-
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['carouselAddIndicators'] = array
@@ -25,6 +24,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['carouselAddIndicators'] = array
     'eval'      => array('tl_class' => 'm12 w50'),
     'sql'       => "char(1) NOT NULL default ''",
 );
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['carouselAddControls'] = array
 (
     'label'     => &$GLOBALS['TL_LANG']['tl_content']['carouselAddControls'],
