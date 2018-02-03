@@ -36,7 +36,7 @@ abstract class Carousel extends \ContentElement
     /**
      * @var string
      */
-    protected static $IDENTIFIER = 'BootstrapCarousel%s';
+    protected static $IDENTIFIER = 'bootstrap-carousel-%s';
 
     /**
      * @param $objContent
@@ -69,7 +69,7 @@ abstract class Carousel extends \ContentElement
         if ($objStart !== null && $objStop !== null)
         {
             $objDb = \Database::getInstance()->prepare('SELECT * FROM tl_content WHERE pid = ? AND invisible=? AND type=? AND sorting > ? AND sorting < ? ORDER BY sorting DESC')
-                ->execute($objContent->pid, '', self::$SEPARATOR, $objStart->sorting, $objStop->sorting);
+                ->execute($objContent->pid, '', static::$SEPARATOR, $objStart->sorting, $objStop->sorting);
             if ($objDb->numRows)
             {
                 $ids = $objDb->fetchEach('id');
@@ -94,7 +94,7 @@ abstract class Carousel extends \ContentElement
         $objContent = \ContentModel::findByPk($objContent->id);
 
         $objDb = \Database::getInstance()->prepare('SELECT * FROM tl_content WHERE pid = ? AND invisible=? AND type=? AND sorting <= ? ORDER BY sorting ASC')->limit(1)
-            ->execute($objContent->pid, '', self::$START, $objContent->sorting);
+            ->execute($objContent->pid, '', static::$START, $objContent->sorting);
         if ($objDb->numRows)
         {
             $objStart = \ContentModel::findByPk($objDb->id);
@@ -115,7 +115,7 @@ abstract class Carousel extends \ContentElement
         $objContent = \ContentModel::findByPk($objContent->id);
 
         $objDb = \Database::getInstance()->prepare('SELECT * FROM tl_content WHERE pid = ? AND invisible=? AND type=? AND sorting >= ? ORDER BY sorting DESC')->limit(1)
-            ->execute($objContent->pid, '', self::$STOP, $objContent->sorting);
+            ->execute($objContent->pid, '', static::$STOP, $objContent->sorting);
         if ($objDb->numRows)
         {
             $objStop = \ContentModel::findByPk($objDb->id);

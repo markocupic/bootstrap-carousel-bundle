@@ -54,7 +54,7 @@ class CarouselStart extends Carousel
         $this->Template->start = $this->getRelatedStart($this);
         $this->Template->stop = $this->getRelatedStop($this);
         $this->Template->separators = $this->getRelatedSeparators($this);
-        $this->Template->identifier = sprintf(self::$IDENTIFIER, $this->getRelatedStart($this)->id);
+        $this->Template->identifier = sprintf(static::$IDENTIFIER, $this->getRelatedStart($this)->id);
 
 
         $this->Template->countItems = $this->countItems($this);

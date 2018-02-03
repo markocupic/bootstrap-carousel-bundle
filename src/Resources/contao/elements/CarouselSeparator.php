@@ -61,7 +61,7 @@ class CarouselSeparator extends Carousel
         $this->Template->separators = $this->getRelatedSeparators($this);
         if ($this->getRelatedStart($this) !== null)
         {
-            $this->Template->identifier = sprintf(self::$IDENTIFIER, $this->getRelatedStart($this)->id);
+            $this->Template->identifier = sprintf(static::$IDENTIFIER, $this->getRelatedStart($this)->id);
         }
     }
 }
