@@ -93,7 +93,7 @@ abstract class Carousel extends \ContentElement
     {
         $objContent = \ContentModel::findByPk($objContent->id);
 
-        $objDb = \Database::getInstance()->prepare('SELECT * FROM tl_content WHERE pid = ? AND invisible=? AND type=? AND sorting <= ? ORDER BY sorting ASC')->limit(1)
+        $objDb = \Database::getInstance()->prepare('SELECT * FROM tl_content WHERE pid = ? AND invisible=? AND type=? AND sorting <= ? ORDER BY sorting DESC')->limit(1)
             ->execute($objContent->pid, '', static::$START, $objContent->sorting);
         if ($objDb->numRows)
         {
