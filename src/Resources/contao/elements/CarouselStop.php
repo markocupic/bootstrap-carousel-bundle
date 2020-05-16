@@ -12,6 +12,8 @@
 
 namespace Markocupic\BootstrapCarousel;
 
+use Contao\ContentModel;
+
 /**
  * Class CarouselStop
  * @package Markocupic\BootstrapCarousel
@@ -49,12 +51,15 @@ class CarouselStop extends Carousel
      */
     protected function compile()
     {
-        $this->Template->start = $this->getRelatedStart($this);
-        $this->Template->stop = $this->getRelatedStop($this);
-        $this->Template->separators = $this->getRelatedSeparators($this);
-        if ($this->getRelatedStart($this) !== null)
+        /** @var ContentModel $model */
+        $model = $this->getModel();
+
+        $this->Template->start = $this->getRelatedStart($model);
+        $this->Template->stop = $this->getRelatedStop($model);
+        $this->Template->separators = $this->getRelatedSeparators($model);
+        if ($this->getRelatedStart($model) !== null)
         {
-            $this->Template->identifier = sprintf(self::$IDENTIFIER, $this->getRelatedStart($this)->id);
+            $this->Template->identifier = sprintf(self::$IDENTIFIER, $this->getRelatedStart($model)->id);
         }
 
         // Labels

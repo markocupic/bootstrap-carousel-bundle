@@ -12,6 +12,8 @@
 
 namespace Markocupic\BootstrapCarousel;
 
+use Contao\ContentModel;
+
 /**
  * Class CarouselSeparator
  * @package Markocupic\BootstrapCarousel
@@ -45,23 +47,23 @@ class CarouselSeparator extends Carousel
         return parent::generate();
     }
 
-
     /**
      * Generate the content element
      */
     protected function compile()
     {
-        $this->Template->start = $this->getRelatedStart($this);
-        $this->Template->stop = $this->getRelatedStop($this);
-        $this->Template->separators = $this->getRelatedSeparators($this);
+        /** @var ContentModel $model */
+        $model = $this->getModel();
 
-
-        $this->Template->start = $this->getRelatedStart($this);
-        $this->Template->stop = $this->getRelatedStop($this);
-        $this->Template->separators = $this->getRelatedSeparators($this);
-        if ($this->getRelatedStart($this) !== null)
+        $this->Template->start = $this->getRelatedStart($model);
+        $this->Template->stop = $this->getRelatedStop($model);
+        $this->Template->separators = $this->getRelatedSeparators($model);
+        $this->Template->start = $this->getRelatedStart($model);
+        $this->Template->stop = $this->getRelatedStop($model);
+        $this->Template->separators = $this->getRelatedSeparators($model);
+        if ($this->getRelatedStart($model) !== null)
         {
-            $this->Template->identifier = sprintf(static::$IDENTIFIER, $this->getRelatedStart($this)->id);
+            $this->Template->identifier = sprintf(static::$IDENTIFIER, $this->getRelatedStart($model)->id);
         }
     }
 }

@@ -12,13 +12,14 @@
 
 namespace Markocupic\BootstrapCarousel;
 
+use Contao\ContentModel;
+
 /**
  * Class CarouselStart
  * @package Markocupic\BootstrapCarousel
  */
 class CarouselStart extends Carousel
 {
-
 
     /**
      * Template
@@ -51,14 +52,18 @@ class CarouselStart extends Carousel
      */
     protected function compile()
     {
-        $this->Template->start = $this->getRelatedStart($this);
-        $this->Template->stop = $this->getRelatedStop($this);
-        $this->Template->separators = $this->getRelatedSeparators($this);
-        $this->Template->identifier = sprintf(static::$IDENTIFIER, $this->getRelatedStart($this)->id);
+        /** @var ContentModel $model */
+        $model = $this->getModel();
 
-
-        $this->Template->countItems = $this->countItems($this);
-        $this->Template->carouselId = $this->getCarouselId($this);
+        $this->Template->start = $this->getRelatedStart($model);
+        $this->Template->stop = $this->getRelatedStop($model);
+        $this->Template->separators = $this->getRelatedSeparators($model);
+        if ($this->getRelatedStart($model) !== null)
+        {
+            $this->Template->identifier = sprintf(static::$IDENTIFIER, $this->getRelatedStart($model)->id);
+        }
+        $this->Template->countItems = $this->countItems($model);
+        $this->Template->carouselId = $this->getCarouselId($model);
         $this->Template->carouselAutoplay = $this->carouselAutoplay ? 'carousel' : 'false';
         $this->Template->carouselReactToKeyboard = $this->carouselReactToKeyboard ? 'true' : 'false';
         $this->Template->carouselPauseOnHover = $this->carouselPauseOnHover ? 'hover' : 'false';
