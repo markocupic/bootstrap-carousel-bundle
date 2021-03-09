@@ -1,9 +1,9 @@
 
-<div id="<?= $this->identifier ?>" class="carousel slide" data-interval="<?= $this->carouselInterval ?>" data-ride="<?= $this->carouselAutoplay ?>" data-keyboard="<?= $this->carouselReactToKeyboard ?>" data-pause="<?= $this->carouselPauseOnHover ?>" data-wrap="<?= $this->carouselInfiniteCycle ?>">
+<div id="<?= $this->identifier ?>" class="carousel slide" data-interval="<?= $this->carouselInterval ?>" data-bs-ride="<?= $this->carouselAutoplay ?>" data-keyboard="<?= $this->carouselReactToKeyboard ?>" data-pause="<?= $this->carouselPauseOnHover ?>" data-wrap="<?= $this->carouselInfiniteCycle ?>">
 <?php if($this->carouselAddIndicators): ?>
   <ol class="carousel-indicators">
 <?php for($i=0; $i < $this->countItems; $i++): ?>
-    <li data-target="#<?= $this->identifier ?>" data-slide-to="<?= $i ?>"<?php if($i==0): ?> class="active"<?php endif; ?>></li>
+    <li data-bs-target="#<?= $this->identifier ?>" data-bs-slide-to="<?= $i ?>"<?php if($i==0): ?> class="active" aria-current="true"<?php endif; ?>></li>
 <?php endfor; ?>
   </ol>
 <?php endif; ?>

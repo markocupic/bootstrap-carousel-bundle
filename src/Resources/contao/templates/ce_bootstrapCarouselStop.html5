@@ -1,13 +1,15 @@
     </div>
   </div>
 <?php if($this->start->carouselAddControls): ?>
-  <a class="carousel-control-prev" href="#<?= $this->identifier ?>" role="button" data-slide="prev">
+  <button type="button" class="carousel-control-prev" data-bs-target="#<?= $this->identifier ?>" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only"><?= $this->carouselPrevious ?></span>
-  </a>
-  <a class="carousel-control-next" href="#<?= $this->identifier ?>" role="button" data-slide="next">
+    <span class="visually-hidden"><?= $this->carouselPrevious ?></span>
+  </button>
+  <button type="button" class="carousel-control-next" data-bs-target="#<?= $this->identifier ?>" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only"><?= $this->carouselNext ?></span>
-  </a>
+    <span class="visually-hidden"><?= $this->carouselNext ?></span>
+  </button>
 <?php endif; ?>
 </div>
+
+
