@@ -7,6 +7,6 @@
 <?php endfor; ?>
   </ol>
 <?php endif; ?>
-  <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner">
     <div class="carousel-item active">
 
