@@ -16,7 +16,6 @@ namespace Markocupic\BootstrapCarouselBundle\Controller\ContentElement;
 
 use Contao\ContentModel;
 use Contao\CoreBundle\ServiceAnnotation\ContentElement;
-use Contao\PageModel;
 use Contao\Template;
 use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,8 +27,6 @@ use Symfony\Component\HttpFoundation\Response;
 class BootstrapCarouselStartController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStart';
-
-
 
     protected function getResponse(Template $template, ContentModel $model, Request $request): Response
     {

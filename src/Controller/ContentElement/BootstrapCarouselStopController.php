@@ -16,11 +16,11 @@ namespace Markocupic\BootstrapCarouselBundle\Controller\ContentElement;
 
 use Contao\ContentModel;
 use Contao\CoreBundle\ServiceAnnotation\ContentElement;
-use Contao\PageModel;
 use Contao\Template;
 use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @ContentElement(BootstrapCarouselStopController::TYPE, category="bootstrap-carousel", template="ce_bootstrapCarouselStop")
@@ -29,7 +29,12 @@ class BootstrapCarouselStopController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStop';
 
+    private TranslatorInterface $translator;
 
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator= $translator;
+    }
 
     protected function getResponse(Template $template, ContentModel $model, Request $request): Response
     {
@@ -44,8 +49,8 @@ class BootstrapCarouselStopController extends Carousel
         }
 
         // Labels
-        $template->carouselPrevious = $GLOBALS['TL_LANG']['MSC']['carouselPrev'];
-        $template->carouselNext = $GLOBALS['TL_LANG']['MSC']['carouselNext'];
+        $template->carouselPrevious = $this->translator->trans('MSC.carouselPrev',[], 'contao_default');
+        $template->carouselNext =  $this->translator->trans('MSC.carouselNext',[], 'contao_default');
 
         return $template->getResponse();
     }
