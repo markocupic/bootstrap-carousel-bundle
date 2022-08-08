@@ -1,14 +1,20 @@
 <?php
 
-/**
- * Bootstrap Carousel Bundle for Contao CMS
+declare(strict_types=1);
+
+/*
+ * This file is part of Carousel Bundle, a content element for the Contao CMS.
  *
- * Copyright (C) 2005-2018 Marko Cupic
- *
- * @package Bootstrap Carousel Bundle
- * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
- *
+ * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * @license MIT
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
+ * @link https://github.com/markocupic/bootstrap-carousel-bundle
  */
+
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselSeparatorController;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselStartController;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselStopController;
 
 /*
  * Labels
@@ -16,20 +22,15 @@
 $GLOBALS['TL_LANG']['CTE']['bootstrap-carousel'] = 'Carousel elements';
 $GLOBALS['TL_LANG']['MSC']['bootstrap-carousel'] = 'Bootstrap Carousel: %s';
 
-
-/**
+/*
  * Buttons
  */
 $GLOBALS['TL_LANG']['MSC']['carouselPrev'] = 'Previous';
 $GLOBALS['TL_LANG']['MSC']['carouselNext'] = 'Next';
 
-
 /*
  * Content elements
  */
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselStart'][0] = 'Carousel Start';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselStart'][1] = 'Starts a bootstrap carousel.';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselSeparator'][0] = 'Carousel part-element';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselSeparator'][1] = 'Part-element separates parts of the Bootstrap Carousel';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselStop'][0] = 'Carousel end-element';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselStop'][1] = 'End-element of the Bootstrap Carousel';
+$GLOBALS['TL_LANG']['CTE'][BootstrapCarouselStartController::TYPE] = ['Carousel Start', 'The start-element of the Bootstrap Carousel opens the Bootstrap Carousel.'];
+$GLOBALS['TL_LANG']['CTE'][BootstrapCarouselSeparatorController::TYPE] = ['Carousel part-element', 'The Part-element separates parts of the Bootstrap Carousel.'];
+$GLOBALS['TL_LANG']['CTE'][BootstrapCarouselStopController::TYPE] = ['Carousel end-element', 'The end-element of the Bootstrap Carousel closes the Bootstrap Carousel.'];

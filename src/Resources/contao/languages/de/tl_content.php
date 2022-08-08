@@ -1,15 +1,16 @@
 <?php
 
-/**
- * Bootstrap Carousel Bundle for Contao CMS
- *
- * Copyright (C) 2005-2018 Marko Cupic
- *
- * @package Bootstrap Carousel Bundle
- * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
- *
- */
+declare(strict_types=1);
 
+/*
+ * This file is part of Carousel Bundle, a content element for the Contao CMS.
+ *
+ * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * @license MIT
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
+ * @link https://github.com/markocupic/bootstrap-carousel-bundle
+ */
 
 $GLOBALS['TL_LANG']['tl_content']['carouselAddIndicators'][0] = 'Indikatoren anzeigen';
 $GLOBALS['TL_LANG']['tl_content']['carouselAddIndicators'][1] = 'Indikatoren des aktuellen Slider-Elements werden eingeblendet';
@@ -31,4 +32,3 @@ $GLOBALS['TL_LANG']['tl_content']['carouselPauseOnHover'][1] = 'Geben Sie an, ob
 
 $GLOBALS['TL_LANG']['tl_content']['carouselInfiniteCycle'][0] = 'Karussel endlos abspielen';
 $GLOBALS['TL_LANG']['tl_content']['carouselInfiniteCycle'][1] = 'Geben Sie an, ob nach dem letzten Slide wieder zum ersten Slide gesprungen werden soll.';
-

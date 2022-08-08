@@ -1,84 +1,69 @@
 <?php
 
-/**
- * Bootstrap Carousel Bundle for Contao CMS
- *
- * Copyright (C) 2005-2018 Marko Cupic
- *
- * @package Bootstrap Carousel Bundle
- * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
- *
- */
+declare(strict_types=1);
 
 /*
- * Palettes
+ * This file is part of Carousel Bundle, a content element for the Contao CMS.
+ *
+ * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * @license MIT
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
+ * @link https://github.com/markocupic/bootstrap-carousel-bundle
  */
+
 $GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselStart'] = '{type_legend},type;{slider_legend},carouselAddIndicators,carouselAddControls,carouselAutoplay,carouselReactToKeyboard,carouselPauseOnHover,carouselInfiniteCycle,carouselInterval;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselSeparator'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselStop'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 
-
-$GLOBALS['TL_DCA']['tl_content']['fields']['carouselAddIndicators'] = array
-(
-    'label'     => &$GLOBALS['TL_LANG']['tl_content']['carouselAddIndicators'],
+/*
+ * Fields
+ */
+$GLOBALS['TL_DCA']['tl_content']['fields']['carouselAddIndicators'] = [
     'exclude'   => true,
     'inputType' => 'checkbox',
-    'eval'      => array('tl_class' => 'm12 w50'),
+    'eval'      => ['tl_class' => 'm12 w50'],
     'sql'       => "char(1) NOT NULL default ''",
-);
+];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['carouselAddControls'] = array
-(
-    'label'     => &$GLOBALS['TL_LANG']['tl_content']['carouselAddControls'],
+$GLOBALS['TL_DCA']['tl_content']['fields']['carouselAddControls'] = [
     'exclude'   => true,
     'inputType' => 'checkbox',
-    'eval'      => array('tl_class' => 'w50 m12'),
+    'eval'      => ['tl_class' => 'w50 m12'],
     'sql'       => "char(1) NOT NULL default ''",
-);
+];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['carouselAutoplay'] = array
-(
-    'label'     => &$GLOBALS['TL_LANG']['tl_content']['carouselAutoplay'],
+$GLOBALS['TL_DCA']['tl_content']['fields']['carouselAutoplay'] = [
     'exclude'   => true,
     'inputType' => 'checkbox',
-    'eval'      => array('tl_class' => 'w50'),
+    'eval'      => ['tl_class' => 'w50'],
     'sql'       => "char(1) NOT NULL default ''",
-);
+];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['carouselInterval'] = array
-(
-    'label'     => &$GLOBALS['TL_LANG']['tl_content']['carouselInterval'],
+$GLOBALS['TL_DCA']['tl_content']['fields']['carouselInterval'] = [
     'exclude'   => true,
     'inputType' => 'text',
-    'eval'      => array('tl_class' => 'clr'),
+    'eval'      => ['tl_class' => 'clr'],
     'sql'       => "int(10) unsigned NOT NULL default '0'",
-);
+];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['carouselReactToKeyboard'] = array
-(
-    'label'     => &$GLOBALS['TL_LANG']['tl_content']['carouselReactToKeyboard'],
+$GLOBALS['TL_DCA']['tl_content']['fields']['carouselReactToKeyboard'] = [
     'exclude'   => true,
     'inputType' => 'checkbox',
-    'eval'      => array('tl_class' => 'w50'),
+    'eval'      => ['tl_class' => 'w50'],
     'sql'       => "char(1) NOT NULL default ''",
-);
+];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['carouselPauseOnHover'] = array
-(
-    'label'     => &$GLOBALS['TL_LANG']['tl_content']['carouselPauseOnHover'],
+$GLOBALS['TL_DCA']['tl_content']['fields']['carouselPauseOnHover'] = [
     'exclude'   => true,
     'inputType' => 'checkbox',
-    'eval'      => array('tl_class' => 'w50'),
+    'eval'      => ['tl_class' => 'w50'],
     'sql'       => "char(1) NOT NULL default ''",
-);
+];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['carouselInfiniteCycle'] = array
-(
-    'label'     => &$GLOBALS['TL_LANG']['tl_content']['carouselInfiniteCycle'],
+$GLOBALS['TL_DCA']['tl_content']['fields']['carouselInfiniteCycle'] = [
     'exclude'   => true,
     'inputType' => 'checkbox',
-    'eval'      => array('tl_class' => 'w50'),
+    'eval'      => ['tl_class' => 'w50'],
     'sql'       => "char(1) NOT NULL default ''",
-);
-
-
+];

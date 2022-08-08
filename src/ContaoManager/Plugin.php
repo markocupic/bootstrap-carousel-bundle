@@ -1,37 +1,35 @@
 <?php
 
-/**
- * Bootstrap Carousel Bundle for Contao CMS
+declare(strict_types=1);
+
+/*
+ * This file is part of Carousel Bundle, a content element for the Contao CMS.
  *
- * Copyright (C) 2005-2018 Marko Cupic
- *
- * @package Bootstrap Carousel Bundle
- * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
- *
+ * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * @license MIT
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
+ * @link https://github.com/markocupic/bootstrap-carousel-bundle
  */
 
 namespace Markocupic\BootstrapCarouselBundle\ContaoManager;
 
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Markocupic\BootstrapCarouselBundle\MarkocupicBootstrapCarouselBundle;
 
-/**
- * Plugin for the Contao Manager.
- *
- * @author Marko Cupic
- */
 class Plugin implements BundlePluginInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function getBundles(ParserInterface $parser)
+    public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create('Markocupic\BootstrapCarouselBundle\MarkocupicBootstrapCarouselBundle')
-                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle']),
+            BundleConfig::create(MarkocupicBootstrapCarouselBundle::class)
+                ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
-
 }

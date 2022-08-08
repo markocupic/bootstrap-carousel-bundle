@@ -1,14 +1,20 @@
 <?php
 
-/**
- * Bootstrap Carousel Bundle for Contao CMS
+declare(strict_types=1);
+
+/*
+ * This file is part of Carousel Bundle, a content element for the Contao CMS.
  *
- * Copyright (C) 2005-2018 Marko Cupic
- *
- * @package Bootstrap Carousel Bundle
- * @link    https://www.github.com/markocupic/bootstrap-carousel-bundle
- *
+ * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * @license MIT
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
+ * @link https://github.com/markocupic/bootstrap-carousel-bundle
  */
+
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselSeparatorController;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselStartController;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselStopController;
 
 /*
  * Labels
@@ -16,21 +22,15 @@
 $GLOBALS['TL_LANG']['CTE']['bootstrap-carousel'] = 'Bootstrap Carousel Slider';
 $GLOBALS['TL_LANG']['MSC']['bootstrap-carousel'] = 'Bootstrap Carousel: %s';
 
-
-/**
+/*
  * Buttons
  */
 $GLOBALS['TL_LANG']['MSC']['carouselPrev'] = 'Rückwärts';
 $GLOBALS['TL_LANG']['MSC']['carouselNext'] = 'Vorwärts';
 
-
 /*
  * Content elements
  */
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselStart'][0] = 'Carousel Umschlag Anfang';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselStart'][1] = 'Beginnt ein Bootstrap Carousel.';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselSeparator'][0] = 'Carousel Trennelement';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselSeparator'][1] = 'Trennelement für das Bootstrap Carousel';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselStop'][0] = 'Carousel Umschlag Ende';
-$GLOBALS['TL_LANG']['CTE']['bootstrapCarouselStop'][1] = 'Ende des Bootstrap Carousels';
-
+$GLOBALS['TL_LANG']['CTE'][BootstrapCarouselStartController::TYPE] = ['Carousel Umschlag Anfang', 'Beginnt ein Bootstrap Carousel.'];
+$GLOBALS['TL_LANG']['CTE'][BootstrapCarouselSeparatorController::TYPE] = ['Carousel Trennelement', 'Trennelement für das Bootstrap Carousel'];
+$GLOBALS['TL_LANG']['CTE'][BootstrapCarouselStopController::TYPE] = ['Carousel Umschlag Ende', 'Ende des Bootstrap Carousels'];

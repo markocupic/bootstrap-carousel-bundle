@@ -1,19 +1,24 @@
 <?php
 
-/**
- * @package    bootstrap-carousel
- * @author     Marko Cupic <m.cupic@gmx.ch>
- * @copyright  Marko Cupic 2018
- * @license    MIT
+declare(strict_types=1);
+
+/*
+ * This file is part of Carousel Bundle, a content element for the Contao CMS.
  *
+ * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * @license MIT
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
+ * @link https://github.com/markocupic/bootstrap-carousel-bundle
  */
 
-// Content elements
-$GLOBALS['TL_CTE']['bootstrap-carousel']['bootstrapCarouselStart'] = 'Markocupic\BootstrapCarousel\CarouselStart';
-$GLOBALS['TL_CTE']['bootstrap-carousel']['bootstrapCarouselSeparator'] = 'Markocupic\BootstrapCarousel\CarouselSeparator';
-$GLOBALS['TL_CTE']['bootstrap-carousel']['bootstrapCarouselStop'] = 'Markocupic\BootstrapCarousel\CarouselStop';
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselSeparatorController;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselStartController;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselStopController;
 
-// Wrapper settings
-$GLOBALS['TL_WRAPPERS']['start'][] = 'bootstrapCarouselStart';
-$GLOBALS['TL_WRAPPERS']['separator'][] = 'bootstrapCarouselSeparator';
-$GLOBALS['TL_WRAPPERS']['stop'][] = 'bootstrapCarouselStop';
+/*
+ * Wrappers
+ */
+$GLOBALS['TL_WRAPPERS']['start'][] = BootstrapCarouselStartController::TYPE;
+$GLOBALS['TL_WRAPPERS']['separator'][] = BootstrapCarouselSeparatorController::TYPE;
+$GLOBALS['TL_WRAPPERS']['stop'][] = BootstrapCarouselStopController::TYPE;
