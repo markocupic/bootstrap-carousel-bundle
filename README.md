@@ -1,6 +1,7 @@
-# bootstrap-carousel-bundle
+![Logo](https://github.com/markocupic/markocupic/blob/main/logo.png)
 
+# Contao Bootstrap Carousel Bundle
+This bundle provides a [Bootstrap Carousel](https://getbootstrap.com/docs/4.0/components/carousel/) content element for the [Contao CMS](https://contao.org/).
 
-Use version 1.* for bootstrap 4.*
+![Bootstrap Carousel](docs/images/carousel_frontend.png)
 
-Use version 2.* for bootstrap 5.*
