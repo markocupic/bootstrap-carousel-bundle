@@ -29,12 +29,7 @@ class BootstrapCarouselStopController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStop';
 
-    public function __invoke(Request $request, ContentModel $model, string $section, array $classes = null, PageModel $pageModel = null): Response
-    {
-        $model->title = $model->headline;
 
-        return parent::__invoke($request, $model, $section, $classes);
-    }
 
     protected function getResponse(Template $template, ContentModel $model, Request $request): Response
     {
@@ -45,7 +40,7 @@ class BootstrapCarouselStopController extends Carousel
         $template->identifier = '';
 
         if (null !== $this->getRelatedStart($model)) {
-            $template->identifier = sprintf(self::$IDENTIFIER, $this->getRelatedStart($model)->id);
+            $template->identifier = sprintf(self::$IDENTIFIER, (string) $this->getRelatedStart($model)->id);
         }
 
         // Labels

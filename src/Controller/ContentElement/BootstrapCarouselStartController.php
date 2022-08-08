@@ -29,12 +29,7 @@ class BootstrapCarouselStartController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStart';
 
-    public function __invoke(Request $request, ContentModel $model, string $section, array $classes = null, PageModel $pageModel = null): Response
-    {
-        $model->title = $model->headline;
 
-        return parent::__invoke($request, $model, $section, $classes);
-    }
 
     protected function getResponse(Template $template, ContentModel $model, Request $request): Response
     {
@@ -45,7 +40,7 @@ class BootstrapCarouselStartController extends Carousel
         $template->identifier = '';
 
         if (null !== $this->getRelatedStart($model)) {
-            $template->identifier = sprintf(static::$IDENTIFIER, $this->getRelatedStart($model)->id);
+            $template->identifier = sprintf(static::$IDENTIFIER, (string) $this->getRelatedStart($model)->id);
         }
 
         $template->countItems = $this->countItems($model);
