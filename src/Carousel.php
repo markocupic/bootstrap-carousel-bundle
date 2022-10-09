@@ -32,7 +32,7 @@ abstract class Carousel extends AbstractContentElementController
 
         if (null !== $objStart && null !== $objStop) {
             return ContentModel::findBy(
-                ['tl_content.pid=?', 'tl_content.invisible=?', 'tl_content.type=?', 'tl_content.sorting>?', 'tl_content.sorting<?'],
+                ['tl_content.pid = ?', 'tl_content.invisible = ?', 'tl_content.type = ?', 'tl_content.sorting > ?', 'tl_content.sorting < ?'],
                 [$objContent->pid, '', static::$SEPARATOR, $objStart->sorting, $objStop->sorting],
                 ['order' => 'tl_content.sorting DESC']
             );
@@ -44,7 +44,7 @@ abstract class Carousel extends AbstractContentElementController
     protected function getRelatedStart(ContentModel $objContent): ContentModel|null
     {
         return ContentModel::findOneBy(
-            ['tl_content.pid=?', 'tl_content.invisible=?', 'tl_content.type=?', 'tl_content.sorting<=?'],
+            ['tl_content.pid = ?', 'tl_content.invisible = ?', 'tl_content.type = ?', 'tl_content.sorting <= ?'],
             [$objContent->pid, '', static::$START, $objContent->sorting],
             [
                 'order' => 'tl_content.sorting DESC',
@@ -55,7 +55,7 @@ abstract class Carousel extends AbstractContentElementController
     protected function getRelatedStop(ContentModel $objContent): ContentModel|null
     {
         return ContentModel::findOneBy(
-            ['tl_content.pid=?', 'tl_content.invisible=?', 'tl_content.type=?', 'tl_content.sorting>=?'],
+            ['tl_content.pid = ?', 'tl_content.invisible = ?', 'tl_content.type = ?', 'tl_content.sorting >= ?'],
             [$objContent->pid, '', static::$STOP, $objContent->sorting],
             [
                 'order' => 'tl_content.sorting ASC',
