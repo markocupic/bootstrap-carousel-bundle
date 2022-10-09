@@ -48,6 +48,7 @@ class BootstrapCarouselStartController extends Carousel
         $template->carouselPauseOnHover = isset($model->carouselPauseOnHover) && $model->carouselPauseOnHover ? 'hover' : 'false';
         $template->carouselInfiniteCycle = isset($model->carouselInfiniteCycle) && $model->carouselInfiniteCycle ? 'true' : 'false';
         $template->addIndicators = isset($model->addIndicators) && $model->addIndicators;
+        $template->carouselFade = isset($model->carouselFade) && $model->carouselFade ? true : false;
 
         return $template->getResponse();
     }

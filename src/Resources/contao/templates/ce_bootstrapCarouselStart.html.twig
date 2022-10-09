@@ -1,4 +1,4 @@
-<div id="{{ identifier }}" class="carousel slide" data-interval="{{ carouselInterval }}" data-bs-ride="{{ carouselAutoplay }}" data-keyboard="{{ carouselReactToKeyboard }}" data-pause="{{ carouselPauseOnHover }}" data-wrap="{{ carouselInfiniteCycle }}">
+<div id="{{ identifier }}" class="carousel slide{% if carouselFade %} carousel-fade{% endif %}" data-interval="{{ carouselInterval }}" data-bs-ride="{{ carouselAutoplay }}" data-keyboard="{{ carouselReactToKeyboard }}" data-pause="{{ carouselPauseOnHover }}" data-wrap="{{ carouselInfiniteCycle }}">
     {% if carouselAddIndicators %}
         <ol class="carousel-indicators">
             {% for counter in arrCount %}

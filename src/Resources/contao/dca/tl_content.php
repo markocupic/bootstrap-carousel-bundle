@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/bootstrap-carousel-bundle
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselStart'] = '{type_legend},type;{slider_legend},carouselAddIndicators,carouselAddControls,carouselAutoplay,carouselReactToKeyboard,carouselPauseOnHover,carouselInfiniteCycle,carouselInterval;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselStart'] = '{type_legend},type;{slider_legend},carouselAddIndicators,carouselAddControls,carouselAutoplay,carouselFade,carouselReactToKeyboard,carouselPauseOnHover,carouselInfiniteCycle,carouselInterval;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselSeparator'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['bootstrapCarouselStop'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 
@@ -62,6 +62,13 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['carouselPauseOnHover'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['carouselInfiniteCycle'] = [
+    'exclude'   => true,
+    'inputType' => 'checkbox',
+    'eval'      => ['tl_class' => 'w50'],
+    'sql'       => "char(1) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['carouselFade'] = [
     'exclude'   => true,
     'inputType' => 'checkbox',
     'eval'      => ['tl_class' => 'w50'],

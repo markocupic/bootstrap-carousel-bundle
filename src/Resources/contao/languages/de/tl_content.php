@@ -32,3 +32,6 @@ $GLOBALS['TL_LANG']['tl_content']['carouselPauseOnHover'][1] = 'Geben Sie an, ob
 
 $GLOBALS['TL_LANG']['tl_content']['carouselInfiniteCycle'][0] = 'Karussel endlos abspielen';
 $GLOBALS['TL_LANG']['tl_content']['carouselInfiniteCycle'][1] = 'Geben Sie an, ob nach dem letzten Slide wieder zum ersten Slide gesprungen werden soll.';
+
+$GLOBALS['TL_LANG']['tl_content']['carouselFade'][0] = 'Karussel-Fade aktivieren.';
+$GLOBALS['TL_LANG']['tl_content']['carouselFade'][1] = 'Karussel-Fade-Effekt aktivieren.';

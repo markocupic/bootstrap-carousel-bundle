@@ -32,3 +32,6 @@ $GLOBALS['TL_LANG']['tl_content']['carouselPauseOnHover'][1] = 'Pauses the cycli
 
 $GLOBALS['TL_LANG']['tl_content']['carouselInfiniteCycle'][0] = 'Hard stops';
 $GLOBALS['TL_LANG']['tl_content']['carouselInfiniteCycle'][1] = 'Whether the carousel should cycle continuously or have hard stops.';
+
+$GLOBALS['TL_LANG']['tl_content']['carouselFade'][0] = 'Activate carousel fade';
+$GLOBALS['TL_LANG']['tl_content']['carouselFade'][1] = 'Activate carousel crossfade effect.';
