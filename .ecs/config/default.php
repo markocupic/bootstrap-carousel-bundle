@@ -9,8 +9,6 @@ return static function (ECSConfig $ECSConfig): void {
     $ECSConfig->import(__DIR__ . '../../../../../contao/easy-coding-standard/config/contao.php');
 
     // Custom
-    $ECSConfig->import(__DIR__.'/set/header_comment_fixer.php');
-
-    // Custom
-    $ECSConfig->import(__DIR__.'/set/skip_configuration.php');
+    $ECSConfig->import(__DIR__.'/set/config.php');
 };
+
