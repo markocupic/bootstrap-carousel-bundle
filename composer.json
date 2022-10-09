@@ -28,6 +28,9 @@
   "require-dev": {
     "contao/easy-coding-standard": "^5.0"
   },
+  "suggest": {
+    "markocupic/contao-component-bootstrap": "^5.2"
+  },
   "autoload": {
     "psr-4": {
       "Markocupic\\BootstrapCarouselBundle\\": "src/"
