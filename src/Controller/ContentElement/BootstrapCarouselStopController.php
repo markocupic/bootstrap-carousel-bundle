@@ -16,6 +16,7 @@ namespace Markocupic\BootstrapCarouselBundle\Controller\ContentElement;
 
 use Contao\ContentModel;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
+use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\Template;
 use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,11 +28,22 @@ class BootstrapCarouselStopController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStop';
 
-    private TranslatorInterface $translator;
+    protected ScopeMatcher $scopeMatcher;
+    protected TranslatorInterface $translator;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(ScopeMatcher $scopeMatcher, TranslatorInterface $translator)
     {
+        $this->scopeMatcher = $scopeMatcher;
         $this->translator = $translator;
+    }
+
+    public function __invoke(Request $request, ContentModel $model, string $section, array $classes = null): Response
+    {
+        if ($this->scopeMatcher->isBackendRequest($request)) {
+            return new Response('', Response::HTTP_NO_CONTENT);
+        }
+
+        return parent::__invoke($request, $model, $section, $classes);
     }
 
     protected function getResponse(Template $template, ContentModel $model, Request $request): Response
@@ -42,8 +54,8 @@ class BootstrapCarouselStopController extends Carousel
 
         $template->identifier = '';
 
-        if (null !== $this->getRelatedStart($model)) {
-            $template->identifier = sprintf(self::$IDENTIFIER, (string) $this->getRelatedStart($model)->id);
+        if (null !== ($relatedStart = $this->getRelatedStart($model))) {
+            $template->identifier = sprintf(self::$IDENTIFIER, (string) $relatedStart->id);
         }
 
         // Labels
