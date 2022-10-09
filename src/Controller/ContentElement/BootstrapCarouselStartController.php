@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of Carousel Bundle, a content element for the Contao CMS.
+ * This file is part of Bootstrap Carousel Bundle.
  *
  * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
  * @license MIT
@@ -15,15 +15,13 @@ declare(strict_types=1);
 namespace Markocupic\BootstrapCarouselBundle\Controller\ContentElement;
 
 use Contao\ContentModel;
-use Contao\CoreBundle\ServiceAnnotation\ContentElement;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\Template;
 use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @ContentElement(BootstrapCarouselStartController::TYPE, category="bootstrap-carousel", template="ce_bootstrapCarouselStart")
- */
+#[AsContentElement(category: 'bootstrap-carousel')]
 class BootstrapCarouselStartController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStart';
