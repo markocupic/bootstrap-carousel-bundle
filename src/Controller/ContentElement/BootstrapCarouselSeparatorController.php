@@ -21,7 +21,7 @@ use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsContentElement(category: 'bootstrap-carousel')]
+#[AsContentElement(BootstrapCarouselSeparatorController::TYPE, category: 'bootstrap-carousel')]
 class BootstrapCarouselSeparatorController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselSeparator';

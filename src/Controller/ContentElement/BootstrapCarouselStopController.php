@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsContentElement(category: 'bootstrap-carousel')]
+#[AsContentElement(BootstrapCarouselStopController::TYPE, category: 'bootstrap-carousel')]
 class BootstrapCarouselStopController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStop';

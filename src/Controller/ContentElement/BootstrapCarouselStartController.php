@@ -21,7 +21,7 @@ use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsContentElement(category: 'bootstrap-carousel')]
+#[AsContentElement(BootstrapCarouselStartController::TYPE, category: 'bootstrap-carousel')]
 class BootstrapCarouselStartController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStart';
