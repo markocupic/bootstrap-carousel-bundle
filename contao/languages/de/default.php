@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of Carousel Bundle, a content element for the Contao CMS.
+ * This file is part of Contao Bootstrap Carousel Bundle.
  *
  * (c) Marko Cupic 2023 <m.cupic@gmx.ch>
  * @license MIT
