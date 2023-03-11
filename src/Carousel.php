@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of Bootstrap Carousel Bundle.
  *
- * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * (c) Marko Cupic 2023 <m.cupic@gmx.ch>
  * @license MIT
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
@@ -17,13 +17,13 @@ namespace Markocupic\BootstrapCarouselBundle;
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
 use Contao\Model\Collection;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselSeparatorController;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselStartController;
+use Markocupic\BootstrapCarouselBundle\Controller\ContentElement\BootstrapCarouselStopController;
 
 abstract class Carousel extends AbstractContentElementController
 {
-    protected static string $START = 'bootstrapCarouselStart';
-    protected static string $SEPARATOR = 'bootstrapCarouselSeparator';
-    protected static string $STOP = 'bootstrapCarouselStop';
-    protected static string $IDENTIFIER = 'bootstrap-carousel-%s';
+    public const IDENTIFIER = 'bootstrap-carousel-%s';
 
     protected function getRelatedSeparators(ContentModel $objContent): Collection|null
     {
@@ -32,9 +32,23 @@ abstract class Carousel extends AbstractContentElementController
 
         if (null !== $objStart && null !== $objStop) {
             return ContentModel::findBy(
-                ['tl_content.pid = ?', 'tl_content.invisible = ?', 'tl_content.type = ?', 'tl_content.sorting > ?', 'tl_content.sorting < ?'],
-                [$objContent->pid, '', static::$SEPARATOR, $objStart->sorting, $objStop->sorting],
-                ['order' => 'tl_content.sorting DESC']
+                [
+                    'tl_content.pid = ?',
+                    'tl_content.invisible = ?',
+                    'tl_content.type = ?',
+                    'tl_content.sorting > ?',
+                    'tl_content.sorting < ?',
+                ],
+                [
+                    $objContent->pid,
+                    '',
+                    BootstrapCarouselSeparatorController::TYPE,
+                    $objStart->sorting,
+                    $objStop->sorting,
+                ],
+                [
+                    'order' => 'tl_content.sorting DESC',
+                ]
             );
         }
 
@@ -44,8 +58,18 @@ abstract class Carousel extends AbstractContentElementController
     protected function getRelatedStart(ContentModel $objContent): ContentModel|null
     {
         return ContentModel::findOneBy(
-            ['tl_content.pid = ?', 'tl_content.invisible = ?', 'tl_content.type = ?', 'tl_content.sorting <= ?'],
-            [$objContent->pid, '', static::$START, $objContent->sorting],
+            [
+                'tl_content.pid = ?',
+                'tl_content.invisible = ?',
+                'tl_content.type = ?',
+                'tl_content.sorting <= ?',
+            ],
+            [
+                $objContent->pid,
+                '',
+                BootstrapCarouselStartController::TYPE,
+                $objContent->sorting,
+            ],
             [
                 'order' => 'tl_content.sorting DESC',
             ]
@@ -55,8 +79,18 @@ abstract class Carousel extends AbstractContentElementController
     protected function getRelatedStop(ContentModel $objContent): ContentModel|null
     {
         return ContentModel::findOneBy(
-            ['tl_content.pid = ?', 'tl_content.invisible = ?', 'tl_content.type = ?', 'tl_content.sorting >= ?'],
-            [$objContent->pid, '', static::$STOP, $objContent->sorting],
+            [
+                'tl_content.pid = ?',
+                'tl_content.invisible = ?',
+                'tl_content.type = ?',
+                'tl_content.sorting >= ?',
+            ],
+            [
+                $objContent->pid,
+                '',
+                BootstrapCarouselStopController::TYPE,
+                $objContent->sorting,
+            ],
             [
                 'order' => 'tl_content.sorting ASC',
             ]

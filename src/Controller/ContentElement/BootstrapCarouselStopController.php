@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of Bootstrap Carousel Bundle.
  *
- * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * (c) Marko Cupic 2023 <m.cupic@gmx.ch>
  * @license MIT
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
@@ -23,18 +23,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsContentElement(BootstrapCarouselStopController::TYPE, category: 'bootstrap-carousel')]
+#[AsContentElement(BootstrapCarouselStopController::TYPE, category: 'bootstrap-carousel', template: 'ce_bootstrapCarouselStop')]
 class BootstrapCarouselStopController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStop';
 
-    protected ScopeMatcher $scopeMatcher;
-    protected TranslatorInterface $translator;
-
-    public function __construct(ScopeMatcher $scopeMatcher, TranslatorInterface $translator)
-    {
-        $this->scopeMatcher = $scopeMatcher;
-        $this->translator = $translator;
+    public function __construct(
+        protected readonly ScopeMatcher $scopeMatcher,
+        protected readonly TranslatorInterface $translator,
+    ) {
     }
 
     public function __invoke(Request $request, ContentModel $model, string $section, array $classes = null): Response
@@ -55,7 +52,7 @@ class BootstrapCarouselStopController extends Carousel
         $template->identifier = '';
 
         if (null !== ($relatedStart = $this->getRelatedStart($model))) {
-            $template->identifier = sprintf(self::$IDENTIFIER, (string) $relatedStart->id);
+            $template->identifier = sprintf(parent::IDENTIFIER, (string) $relatedStart->id);
         }
 
         // Labels

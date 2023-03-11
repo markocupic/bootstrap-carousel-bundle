@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of Bootstrap Carousel Bundle.
  *
- * (c) Marko Cupic 2022 <m.cupic@gmx.ch>
+ * (c) Marko Cupic 2023 <m.cupic@gmx.ch>
  * @license MIT
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
@@ -22,16 +22,14 @@ use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsContentElement(BootstrapCarouselStartController::TYPE, category: 'bootstrap-carousel')]
+#[AsContentElement(BootstrapCarouselStartController::TYPE, category: 'bootstrap-carousel', template: 'ce_bootstrapCarouselStart')]
 class BootstrapCarouselStartController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStart';
 
-    protected ScopeMatcher $scopeMatcher;
-
-    public function __construct(ScopeMatcher $scopeMatcher)
-    {
-        $this->scopeMatcher = $scopeMatcher;
+    public function __construct(
+        protected readonly ScopeMatcher $scopeMatcher,
+    ) {
     }
 
     public function __invoke(Request $request, ContentModel $model, string $section, array $classes = null): Response
@@ -52,7 +50,7 @@ class BootstrapCarouselStartController extends Carousel
         $template->identifier = '';
 
         if (null !== ($relatedStart = $this->getRelatedStart($model))) {
-            $template->identifier = sprintf(static::$IDENTIFIER, (string) $relatedStart->id);
+            $template->identifier = sprintf(parent::IDENTIFIER, (string) $relatedStart->id);
         }
 
         $template->countItems = $this->countItems($model);
