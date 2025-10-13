@@ -35,7 +35,7 @@ class BootstrapCarouselSeparatorController extends Carousel
     /**
      * @param array<string>|null $classes
      */
-    public function __invoke(Request $request, ContentModel $model, string $section, array $classes = null): Response
+    public function __invoke(Request $request, ContentModel $model, string $section, array|null $classes = null): Response
     {
         if ($this->scopeMatcher->isBackendRequest($request)) {
             return new Response('', Response::HTTP_NO_CONTENT);
