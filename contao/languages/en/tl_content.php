@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of Contao Bootstrap Carousel Bundle.
  *
- * (c) Marko Cupic 2023 <m.cupic@gmx.ch>
+ * (c) Marko Cupic <m.cupic@gmx.ch>
  * @license MIT
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
@@ -17,6 +17,9 @@ $GLOBALS['TL_LANG']['tl_content']['carouselAddIndicators'][1] = 'Indicators of t
 
 $GLOBALS['TL_LANG']['tl_content']['carouselAddControls'][0] = 'Show controls';
 $GLOBALS['TL_LANG']['tl_content']['carouselAddControls'][1] = 'Left/right buttons are displayed.';
+
+$GLOBALS['TL_LANG']['tl_content']['showProgressbar'][0] = 'Show progress (interval)';
+$GLOBALS['TL_LANG']['tl_content']['showProgressbar'][1] = 'Should the progress indicator be displayed?';
 
 $GLOBALS['TL_LANG']['tl_content']['carouselAutoplay'][0] = 'Austostart';
 $GLOBALS['TL_LANG']['tl_content']['carouselAutoplay'][1] = 'Animation of the elements start atomatically.';

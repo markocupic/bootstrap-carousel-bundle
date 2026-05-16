@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of Bootstrap Carousel Bundle.
  *
- * (c) Marko Cupic 2023 <m.cupic@gmx.ch>
+ * (c) Marko Cupic <m.cupic@gmx.ch>
  * @license MIT
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
@@ -27,9 +27,8 @@ class BootstrapCarouselSeparatorController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselSeparator';
 
-    public function __construct(
-        protected readonly ScopeMatcher $scopeMatcher,
-    ) {
+    public function __construct(protected readonly ScopeMatcher $scopeMatcher)
+    {
     }
 
     /**
@@ -52,7 +51,7 @@ class BootstrapCarouselSeparatorController extends Carousel
         $arrTemplate['separators'] = $this->getRelatedSeparators($model);
 
         if (null !== ($relatedStart = $this->getRelatedStart($model))) {
-            $arrTemplate['identifier'] = sprintf(parent::IDENTIFIER, (string) $relatedStart->id);
+            $arrTemplate['identifier'] = \sprintf(parent::IDENTIFIER, (string) $relatedStart->id);
         }
 
         $template->setData(array_merge($template->getData(), $arrTemplate));

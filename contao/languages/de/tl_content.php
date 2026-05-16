@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of Contao Bootstrap Carousel Bundle.
  *
- * (c) Marko Cupic 2023 <m.cupic@gmx.ch>
+ * (c) Marko Cupic <m.cupic@gmx.ch>
  * @license MIT
  * For the full copyright and license information,
  * please view the LICENSE file that was distributed with this source code.
@@ -17,6 +17,9 @@ $GLOBALS['TL_LANG']['tl_content']['carouselAddIndicators'][1] = 'Indikatoren des
 
 $GLOBALS['TL_LANG']['tl_content']['carouselAddControls'][0] = 'Steuerelemente anzeigen';
 $GLOBALS['TL_LANG']['tl_content']['carouselAddControls'][1] = 'Rechts/Link Schaltflächen werden anzeigt.';
+
+$GLOBALS['TL_LANG']['tl_content']['showProgressbar'][0] = 'Fortschritt anzeigen (Intervall)';
+$GLOBALS['TL_LANG']['tl_content']['showProgressbar'][1] = 'Soll die Fortschrittsanzeige angezeigt werden?';
 
 $GLOBALS['TL_LANG']['tl_content']['carouselAutoplay'][0] = 'Automatisch abspielen';
 $GLOBALS['TL_LANG']['tl_content']['carouselAutoplay'][1] = 'Animation des Elements werden automatisch gestartet.';

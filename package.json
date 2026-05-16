@@ -1,0 +1,35 @@
+{
+    "name": "bootstrap-carousel-bundle",
+    "repository": {
+        "type": "git",
+        "url": "git+github.com/markocupic/bootstrap-carousel-bundle"
+    },
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "license": "MIT",
+
+    "devDependencies": {
+        "@babel/preset-env": "*",
+        "@symfony/webpack-encore": "^5.0",
+        "autoprefixer": "^10.5",
+        "core-js": "^3.49",
+        "css-loader": "^7.1",
+        "file-loader": "^6.0",
+        "postcss-loader": "^8.2"
+    },
+    "browserslist": [
+        "defaults"
+    ],
+    "description": "![Alt text](docs/logo.png?raw=true \"logo\")",
+    "version": "1.0.0",
+    "main": "postcss.config.js",
+    "directories": {
+        "doc": "docs",
+        "test": "tests"
+    },
+    "author": "Marko Cupic"
+}

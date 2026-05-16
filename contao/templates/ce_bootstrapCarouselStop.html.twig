@@ -12,3 +12,17 @@
         </button>
     {% endif %}
 </div>{# end wrapper element #}
+    {% add to head %}
+        <link rel="stylesheet" href="{{ asset('css/carousel_progress.css', 'markocupic_bootstrap_carousel') }}">
+    {% endadd %}
+    {% add to body %}
+        <script src="{{ asset('js/CarouselProgress.js', 'markocupic_bootstrap_carousel') }}"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".carousel[data-progress]").forEach((el) => {
+              new CarouselProgress(el);
+            });
+          });
+        </script>
+    {% endadd %}
+
