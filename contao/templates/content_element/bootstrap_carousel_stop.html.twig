@@ -1,0 +1,45 @@
+{#
+    Closes the carousel.
+
+    Context:
+        carousel_id  The HTML id of the carousel (shared by start, separator and stop element)
+        controls     Show the previous and next buttons
+#}
+        </div>{# end carousel-item #}
+    </div>{# end carousel-inner #}
+    {% block controls %}
+        {% if controls %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#{{ carousel_id }}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">{{ 'MSC.carouselPrev'|trans({}, 'contao_default') }}</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#{{ carousel_id }}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">{{ 'MSC.carouselNext'|trans({}, 'contao_default') }}</span>
+            </button>
+        {% endif %}
+    {% endblock %}
+</div>{# end carousel #}
+
+{% block style %}
+    {% add 'bootstrap_carousel_progress_css' to stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/carousel_progress.css', 'markocupic_bootstrap_carousel') }}">
+    {% endadd %}
+{% endblock %}
+
+{% block script %}
+    {% add 'bootstrap_carousel_progress_js' to body %}
+        {% set script_attributes = attrs()
+            .setIfExists('nonce', csp_nonce('script-src'))
+            .mergeWith(script_attributes|default)
+        %}
+        <script src="{{ asset('js/CarouselProgress.js', 'markocupic_bootstrap_carousel') }}"></script>
+        <script{{ script_attributes }}>
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('.carousel[data-progress]').forEach((el) => {
+                    new CarouselProgress(el);
+                });
+            });
+        </script>
+    {% endadd %}
+{% endblock %}

@@ -23,11 +23,19 @@
     },
     "require": {
         "php": "^8.1",
-        "contao/core-bundle": "^5.3",
-        "symfony/webpack-encore-bundle": "^v2.2"
+        "contao/core-bundle": "^5.3 || ^6.0",
+        "symfony/config": "^6.4 || ^7.0 || ^8.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0 || ^8.0",
+        "symfony/http-foundation": "^6.4 || ^7.0 || ^8.0",
+        "symfony/http-kernel": "^6.4 || ^7.0 || ^8.0",
+        "symfony/translation-contracts": "^3.0"
     },
     "require-dev": {
-        "markocupic/easy-coding-standard": "^13.0"
+        "contao/manager-plugin": "^2.0",
+        "contao/test-case": "^5.3 || ^6.0"
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
     },
     "suggest": {
         "markocupic/contao-component-bootstrap": "^5.2"
@@ -35,6 +43,11 @@
     "autoload": {
         "psr-4": {
             "Markocupic\\BootstrapCarouselBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Markocupic\\BootstrapCarouselBundle\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -45,12 +58,23 @@
             "contao-components/installer": false,
             "contao/manager-plugin": false,
             "contao-community-alliance/composer-plugin": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "php-http/discovery": false
+        },
+        "policy": {
+            "advisories": {
+                "ignore-id": [
+                    "PKSA-8j6w-3kr7-s9xk",
+                    "PKSA-6j95-1jtb-x6wc",
+                    "PKSA-cbx2-m9db-bmzd"
+                ]
+            }
         }
     },
     "scripts": {
-        "cs-fixer": "@php tools/ecs/vendor/bin/ecs check config/ contao/ src/ tests/ --config tools/ecs/config.php --fix --ansi",
-        "phpstan": "@php tools/phpstan/vendor/bin/phpstan analyse src tests --level 9",
-        "unit-tests": "@php tools/phpunit/vendor/bin/phpunit -c tools/phpunit/phpunit.xml.dist"
+        "cs-fixer": "@php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --fix --ansi",
+        "cs-check": "@php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --ansi",
+        "unit-tests": "@php vendor/bin/phpunit --colors=always",
+        "phpstan": "@php tools/phpstan/vendor/bin/phpstan analyse src tests --level 9"
     }
 }

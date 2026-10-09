@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of Bootstrap Carousel Bundle.
+ * This file is part of Contao Bootstrap Carousel Bundle.
  *
  * (c) Marko Cupic <m.cupic@gmx.ch>
  * @license MIT
@@ -17,21 +17,18 @@ namespace Markocupic\BootstrapCarouselBundle\Controller\ContentElement;
 use Contao\ContentModel;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Routing\ScopeMatcher;
-use Contao\Template;
+use Contao\CoreBundle\Twig\FragmentTemplate;
 use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsContentElement(BootstrapCarouselStopController::TYPE, category: 'bootstrap-carousel', template: 'ce_bootstrapCarouselStop')]
+#[AsContentElement(BootstrapCarouselStopController::TYPE, category: 'bootstrap-carousel', template: 'content_element/bootstrap_carousel_stop')]
 class BootstrapCarouselStopController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStop';
 
-    public function __construct(
-        protected readonly ScopeMatcher $scopeMatcher,
-        protected readonly TranslatorInterface $translator,
-    ) {
+    public function __construct(protected readonly ScopeMatcher $scopeMatcher)
+    {
     }
 
     /**
@@ -46,24 +43,12 @@ class BootstrapCarouselStopController extends Carousel
         return parent::__invoke($request, $model, $section, $classes);
     }
 
-    protected function getResponse(Template $template, ContentModel $model, Request $request): Response
+    protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
-        $arrTemplate = [];
-        $arrTemplate['start'] = $this->getRelatedStart($model);
-        $arrTemplate['stop'] = $this->getRelatedStop($model);
-        $arrTemplate['separators'] = $this->getRelatedSeparators($model);
+        $start = $this->getRelatedStart($model);
 
-        $arrTemplate['identifier'] = '';
-
-        if (null !== ($relatedStart = $this->getRelatedStart($model))) {
-            $arrTemplate['identifier'] = \sprintf(parent::IDENTIFIER, (string) $relatedStart->id);
-        }
-
-        // Labels
-        $arrTemplate['carouselPrevious'] = $this->translator->trans('MSC.carouselPrev', [], 'contao_default');
-        $arrTemplate['carouselNext'] = $this->translator->trans('MSC.carouselNext', [], 'contao_default');
-
-        $template->setData(array_merge($template->getData(), $arrTemplate));
+        $template->set('carousel_id', $this->getCarouselHtmlId($model));
+        $template->set('controls', null !== $start && (bool) $start->carouselAddControls);
 
         return $template->getResponse();
     }

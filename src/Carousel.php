@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of Bootstrap Carousel Bundle.
+ * This file is part of Contao Bootstrap Carousel Bundle.
  *
  * (c) Marko Cupic <m.cupic@gmx.ch>
  * @license MIT
@@ -34,14 +34,13 @@ abstract class Carousel extends AbstractContentElementController
             return ContentModel::findBy(
                 [
                     'tl_content.pid = ?',
-                    'tl_content.invisible = ?',
+                    'tl_content.invisible = 0',
                     'tl_content.type = ?',
                     'tl_content.sorting > ?',
                     'tl_content.sorting < ?',
                 ],
                 [
                     $objContent->pid,
-                    '',
                     BootstrapCarouselSeparatorController::TYPE,
                     $objStart->sorting,
                     $objStop->sorting,
@@ -60,13 +59,12 @@ abstract class Carousel extends AbstractContentElementController
         return ContentModel::findOneBy(
             [
                 'tl_content.pid = ?',
-                'tl_content.invisible = ?',
+                'tl_content.invisible = 0',
                 'tl_content.type = ?',
                 'tl_content.sorting <= ?',
             ],
             [
                 $objContent->pid,
-                '',
                 BootstrapCarouselStartController::TYPE,
                 $objContent->sorting,
             ],
@@ -81,13 +79,12 @@ abstract class Carousel extends AbstractContentElementController
         return ContentModel::findOneBy(
             [
                 'tl_content.pid = ?',
-                'tl_content.invisible = ?',
+                'tl_content.invisible = 0',
                 'tl_content.type = ?',
                 'tl_content.sorting >= ?',
             ],
             [
                 $objContent->pid,
-                '',
                 BootstrapCarouselStopController::TYPE,
                 $objContent->sorting,
             ],
@@ -109,14 +106,18 @@ abstract class Carousel extends AbstractContentElementController
         return 1;
     }
 
-    protected function getCarouselId(ContentModel $objContent): int|null
+    /**
+     * Returns the HTML id of the carousel, which is shared by the start,
+     * separator and stop element of the same carousel.
+     */
+    protected function getCarouselHtmlId(ContentModel $objContent): string
     {
         $objStart = $this->getRelatedStart($objContent);
 
-        if (null !== $objStart) {
-            return (int) $objStart->id;
+        if (null === $objStart) {
+            return '';
         }
 
-        return null;
+        return \sprintf(self::IDENTIFIER, $objStart->id);
     }
 }

@@ -5,4 +5,7 @@ services:
 
   Markocupic\BootstrapCarouselBundle\:
     resource: ../src/
-    exclude: ../../{DependencyInjection,Model}
+    exclude:
+      - ../src/ContaoManager/
+      - ../src/DependencyInjection/
+      - ../src/MarkocupicBootstrapCarouselBundle.php
