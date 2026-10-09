@@ -19,7 +19,7 @@ To make the plugin work, you have to embed [Bootstrap](https://getbootstrap.com/
 
 ## Custom templates
 
-The templates of the content elements are located in `contao/templates/content_element/`:
+The templates of the content elements are located in `contao/templates/twig/content_element/`:
 
 - `content_element/bootstrap_carousel_start.html.twig`
 - `content_element/bootstrap_carousel_separator.html.twig`
