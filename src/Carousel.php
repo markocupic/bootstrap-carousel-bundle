@@ -34,14 +34,13 @@ abstract class Carousel extends AbstractContentElementController
             return ContentModel::findBy(
                 [
                     'tl_content.pid = ?',
-                    'tl_content.invisible = ?',
+                    'tl_content.invisible = 0',
                     'tl_content.type = ?',
                     'tl_content.sorting > ?',
                     'tl_content.sorting < ?',
                 ],
                 [
                     $objContent->pid,
-                    '',
                     BootstrapCarouselSeparatorController::TYPE,
                     $objStart->sorting,
                     $objStop->sorting,
@@ -60,13 +59,12 @@ abstract class Carousel extends AbstractContentElementController
         return ContentModel::findOneBy(
             [
                 'tl_content.pid = ?',
-                'tl_content.invisible = ?',
+                'tl_content.invisible = 0',
                 'tl_content.type = ?',
                 'tl_content.sorting <= ?',
             ],
             [
                 $objContent->pid,
-                '',
                 BootstrapCarouselStartController::TYPE,
                 $objContent->sorting,
             ],
@@ -81,13 +79,12 @@ abstract class Carousel extends AbstractContentElementController
         return ContentModel::findOneBy(
             [
                 'tl_content.pid = ?',
-                'tl_content.invisible = ?',
+                'tl_content.invisible = 0',
                 'tl_content.type = ?',
                 'tl_content.sorting >= ?',
             ],
             [
                 $objContent->pid,
-                '',
                 BootstrapCarouselStopController::TYPE,
                 $objContent->sorting,
             ],

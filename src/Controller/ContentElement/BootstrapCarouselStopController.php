@@ -17,13 +17,13 @@ namespace Markocupic\BootstrapCarouselBundle\Controller\ContentElement;
 use Contao\ContentModel;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Routing\ScopeMatcher;
-use Contao\Template;
+use Contao\CoreBundle\Twig\FragmentTemplate;
 use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsContentElement(BootstrapCarouselStopController::TYPE, category: 'bootstrap-carousel', template: 'ce_bootstrapCarouselStop')]
+#[AsContentElement(BootstrapCarouselStopController::TYPE, category: 'bootstrap-carousel', template: 'content_element/bootstrap_carousel_stop')]
 class BootstrapCarouselStopController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStop';
@@ -46,7 +46,7 @@ class BootstrapCarouselStopController extends Carousel
         return parent::__invoke($request, $model, $section, $classes);
     }
 
-    protected function getResponse(Template $template, ContentModel $model, Request $request): Response
+    protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
         $arrTemplate = [];
         $arrTemplate['start'] = $this->getRelatedStart($model);
@@ -54,9 +54,11 @@ class BootstrapCarouselStopController extends Carousel
         $arrTemplate['separators'] = $this->getRelatedSeparators($model);
 
         $arrTemplate['identifier'] = '';
+        $arrTemplate['carouselAddControls'] = false;
 
         if (null !== ($relatedStart = $this->getRelatedStart($model))) {
             $arrTemplate['identifier'] = \sprintf(parent::IDENTIFIER, (string) $relatedStart->id);
+            $arrTemplate['carouselAddControls'] = (bool) $relatedStart->carouselAddControls;
         }
 
         // Labels

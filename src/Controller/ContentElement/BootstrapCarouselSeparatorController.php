@@ -17,12 +17,12 @@ namespace Markocupic\BootstrapCarouselBundle\Controller\ContentElement;
 use Contao\ContentModel;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Routing\ScopeMatcher;
-use Contao\Template;
+use Contao\CoreBundle\Twig\FragmentTemplate;
 use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsContentElement(BootstrapCarouselSeparatorController::TYPE, category: 'bootstrap-carousel', template: 'ce_bootstrapCarouselSeparator')]
+#[AsContentElement(BootstrapCarouselSeparatorController::TYPE, category: 'bootstrap-carousel', template: 'content_element/bootstrap_carousel_separator')]
 class BootstrapCarouselSeparatorController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselSeparator';
@@ -43,7 +43,7 @@ class BootstrapCarouselSeparatorController extends Carousel
         return parent::__invoke($request, $model, $section, $classes);
     }
 
-    protected function getResponse(Template $template, ContentModel $model, Request $request): Response
+    protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
         $arrTemplate = [];
         $arrTemplate['start'] = $this->getRelatedStart($model);

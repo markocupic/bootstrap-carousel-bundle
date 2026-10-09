@@ -3,7 +3,26 @@
 # Contao Bootstrap Carousel Bundle
 This bundle provides a [Bootstrap Carousel](https://getbootstrap.com/docs/5.2/components/carousel/) content element for the [Contao CMS](https://contao.org/).
 
+## Requirements
+
+- Contao 5.3 or later, including Contao 6
+
+## Installation
+
+```bash
+composer require markocupic/bootstrap-carousel-bundle
+```
+
 To make the plugin work, you have to embed [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/download/#cdn-via-jsdelivr) to your Contao layout. 
 
 ![Bootstrap Carousel](docs/images/carousel_frontend.png)
 
+## Custom templates
+
+The templates of the content elements are located in `contao/templates/content_element/`:
+
+- `content_element/bootstrap_carousel_start.html.twig`
+- `content_element/bootstrap_carousel_separator.html.twig`
+- `content_element/bootstrap_carousel_stop.html.twig`
+
+To override one of them, create a template variant, e.g. `templates/content_element/bootstrap_carousel_start/my_carousel.html.twig`, and select it in the content element.

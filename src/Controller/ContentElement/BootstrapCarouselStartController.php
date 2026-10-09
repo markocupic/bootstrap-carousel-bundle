@@ -17,12 +17,12 @@ namespace Markocupic\BootstrapCarouselBundle\Controller\ContentElement;
 use Contao\ContentModel;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Routing\ScopeMatcher;
-use Contao\Template;
+use Contao\CoreBundle\Twig\FragmentTemplate;
 use Markocupic\BootstrapCarouselBundle\Carousel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsContentElement(BootstrapCarouselStartController::TYPE, category: 'bootstrap-carousel', template: 'ce_bootstrapCarouselStart')]
+#[AsContentElement(BootstrapCarouselStartController::TYPE, category: 'bootstrap-carousel', template: 'content_element/bootstrap_carousel_start')]
 class BootstrapCarouselStartController extends Carousel
 {
     public const TYPE = 'bootstrapCarouselStart';
@@ -43,7 +43,7 @@ class BootstrapCarouselStartController extends Carousel
         return parent::__invoke($request, $model, $section, $classes);
     }
 
-    protected function getResponse(Template $template, ContentModel $model, Request $request): Response
+    protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
         $arrTemplate = [];
         $arrTemplate['start'] = $this->getRelatedStart($model);
@@ -66,7 +66,7 @@ class BootstrapCarouselStartController extends Carousel
         $arrTemplate['countItems'] = $this->countItems($model);
         $arrTemplate['arrCount'] = range(0, $this->countItems($model) - 1);
         $arrTemplate['carouselId'] = $this->getCarouselId($model);
-        $arrTemplate['addIndicators'] = $model->carouselAddIndicators;
+        $arrTemplate['carouselAddIndicators'] = (bool) $model->carouselAddIndicators;
 
         $template->setData(array_merge($template->getData(), $arrTemplate));
 
