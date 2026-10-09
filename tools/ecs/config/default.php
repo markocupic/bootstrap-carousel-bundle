@@ -13,7 +13,7 @@ return ECSConfig::configure()
         \Markocupic\EasyCodingStandard\Set\SetList::MARKOCUPIC,
     ])
     ->withPaths([
-        __DIR__ . '/../../src',
+        __DIR__ . '/../../../src',
     ])
     ->withSkip([
         \Contao\EasyCodingStandard\Fixer\CommentLengthFixer::class          => ['*.php'],

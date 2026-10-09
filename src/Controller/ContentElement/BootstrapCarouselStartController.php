@@ -45,30 +45,15 @@ class BootstrapCarouselStartController extends Carousel
 
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
-        $arrTemplate = [];
-        $arrTemplate['start'] = $this->getRelatedStart($model);
-        $arrTemplate['stop'] = $this->getRelatedStop($model);
-        $arrTemplate['separators'] = $this->getRelatedSeparators($model);
-        $arrTemplate['identifier'] = '';
-
-        if (null !== ($relatedStart = $this->getRelatedStart($model))) {
-            $arrTemplate['identifier'] = \sprintf(parent::IDENTIFIER, (string) $relatedStart->id);
-        }
-
-        // Data attributes
-        $arrTemplate['carouselFade'] = (bool) $model->carouselFade;
-        $arrTemplate['carouselInterval'] = (int) $model->carouselInterval;
-        $arrTemplate['carouselAutoplay'] = $model->carouselAutoplay ? 'carousel' : 'false';
-        $arrTemplate['carouselReactToKeyboard'] = $model->carouselReactToKeyboard ? 'true' : 'false';
-        $arrTemplate['carouselPauseOnHover'] = $model->carouselPauseOnHover ? 'hover' : 'false';
-        $arrTemplate['carouselInfiniteCycle'] = $model->carouselInfiniteCycle ? 'true' : 'false';
-
-        $arrTemplate['countItems'] = $this->countItems($model);
-        $arrTemplate['arrCount'] = range(0, $this->countItems($model) - 1);
-        $arrTemplate['carouselId'] = $this->getCarouselId($model);
-        $arrTemplate['carouselAddIndicators'] = (bool) $model->carouselAddIndicators;
-
-        $template->setData(array_merge($template->getData(), $arrTemplate));
+        $template->set('carousel_id', $this->getCarouselHtmlId($model));
+        $template->set('slide_count', $this->countItems($model));
+        $template->set('fade', (bool) $model->carouselFade);
+        $template->set('interval', (int) $model->carouselInterval);
+        $template->set('autoplay', (bool) $model->carouselAutoplay);
+        $template->set('keyboard', (bool) $model->carouselReactToKeyboard);
+        $template->set('pause_on_hover', (bool) $model->carouselPauseOnHover);
+        $template->set('wrap', (bool) $model->carouselInfiniteCycle);
+        $template->set('indicators', (bool) $model->carouselAddIndicators);
 
         return $template->getResponse();
     }

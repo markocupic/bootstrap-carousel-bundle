@@ -25,4 +25,16 @@ The templates of the content elements are located in `contao/templates/content_e
 - `content_element/bootstrap_carousel_separator.html.twig`
 - `content_element/bootstrap_carousel_stop.html.twig`
 
-To override one of them, create a template variant, e.g. `templates/content_element/bootstrap_carousel_start/my_carousel.html.twig`, and select it in the content element.
+To override one of them, create a template variant, e.g. `templates/content_element/bootstrap_carousel_start/my_carousel.html.twig`, and select it in the content element. A variant can extend the original template and override single blocks:
+
+```twig
+{% extends '@Contao/content_element/bootstrap_carousel_start.html.twig' %}
+
+{% block progress %}{% endblock %}
+```
+
+The available variables are documented at the top of each template. The blocks are `indicators` and `progress` (start element) and `controls`, `style` and `script` (stop element).
+
+### Upgrading to version 3
+
+The templates have been moved to the modern Contao template system and the template variables have been renamed (e.g. `identifier` is now `carousel_id`). Custom templates based on `ce_bootstrapCarouselStart`, `ce_bootstrapCarouselSeparator` or `ce_bootstrapCarouselStop` no longer work. Recreate them as variants of the new templates and select the new variants in the content elements.

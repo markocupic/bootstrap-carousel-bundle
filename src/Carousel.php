@@ -106,14 +106,18 @@ abstract class Carousel extends AbstractContentElementController
         return 1;
     }
 
-    protected function getCarouselId(ContentModel $objContent): int|null
+    /**
+     * Returns the HTML id of the carousel, which is shared by the start,
+     * separator and stop element of the same carousel.
+     */
+    protected function getCarouselHtmlId(ContentModel $objContent): string
     {
         $objStart = $this->getRelatedStart($objContent);
 
-        if (null !== $objStart) {
-            return (int) $objStart->id;
+        if (null === $objStart) {
+            return '';
         }
 
-        return null;
+        return \sprintf(self::IDENTIFIER, $objStart->id);
     }
 }

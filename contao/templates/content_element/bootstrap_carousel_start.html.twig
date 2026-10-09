@@ -1,15 +1,54 @@
-<div id="{{ identifier }}" class="carousel slide{% if carouselFade %} carousel-fade{% endif %}" data-progress="true" data-bs-interval="{{ carouselInterval }}" data-bs-ride="{{ carouselAutoplay }}" data-bs-keyboard="{{ carouselReactToKeyboard }}" data-bs-pause="{{ carouselPauseOnHover }}" data-bs-wrap="{{ carouselInfiniteCycle }}">
-    {% if carouselAddIndicators %}
-        <ol class="carousel-indicators">
-            {% for counter in arrCount %}
-                <button type="button" data-bs-target="#{{ identifier }}" data-bs-slide-to="{{ counter }}" {% if counter == 0 %} class="active" aria-current="true" {% endif %} aria-label="Slide 1"></button>
-            {% endfor %}
-        </ol>
-    {% endif %}
-    {% if carouselInterval %}
-        <div class="carousel-progress">
-            <div class="carousel-progress-bar"></div>
-        </div>
-    {% endif %}
+{#
+    Opens the carousel. The separator element starts a new slide and the stop
+    element closes the carousel.
+
+    Context:
+        carousel_id     The HTML id of the carousel (shared by start, separator and stop element)
+        slide_count     The number of slides
+        fade            Use the fade transition instead of the slide transition
+        interval        The autoplay interval in milliseconds (0 = no progress bar)
+        autoplay        Start the carousel automatically
+        keyboard        React to keyboard events
+        pause_on_hover  Pause the carousel on mouse hover
+        wrap            Cycle continuously
+        indicators      Show the slide indicators
+#}
+{% set carousel_attributes = attrs()
+    .set('id', carousel_id)
+    .addClass(['carousel', 'slide', element_css_classes])
+    .addClass('carousel-fade', fade)
+    .set('data-progress', 'true')
+    .set('data-bs-interval', interval)
+    .set('data-bs-ride', autoplay ? 'carousel' : 'false')
+    .set('data-bs-keyboard', keyboard ? 'true' : 'false')
+    .set('data-bs-pause', pause_on_hover ? 'hover' : 'false')
+    .set('data-bs-wrap', wrap ? 'true' : 'false')
+    .mergeWith(carousel_attributes|default)
+%}
+<div{{ carousel_attributes }}>
+    {% block indicators %}
+        {% if indicators %}
+            <div class="carousel-indicators">
+                {% for index in 0..(slide_count - 1) %}
+                    {% set indicator_attributes = attrs()
+                        .set('type', 'button')
+                        .set('data-bs-target', '#' ~ carousel_id)
+                        .set('data-bs-slide-to', index)
+                        .set('aria-label', 'Slide ' ~ (index + 1))
+                        .addClass('active', loop.first)
+                        .set('aria-current', 'true', loop.first)
+                    %}
+                    <button{{ indicator_attributes }}></button>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endblock %}
+    {% block progress %}
+        {% if interval %}
+            <div class="carousel-progress">
+                <div class="carousel-progress-bar"></div>
+            </div>
+        {% endif %}
+    {% endblock %}
     <div class="carousel-inner">
         <div class="carousel-item active">

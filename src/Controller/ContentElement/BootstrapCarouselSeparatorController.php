@@ -45,16 +45,7 @@ class BootstrapCarouselSeparatorController extends Carousel
 
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
-        $arrTemplate = [];
-        $arrTemplate['start'] = $this->getRelatedStart($model);
-        $arrTemplate['stop'] = $this->getRelatedStop($model);
-        $arrTemplate['separators'] = $this->getRelatedSeparators($model);
-
-        if (null !== ($relatedStart = $this->getRelatedStart($model))) {
-            $arrTemplate['identifier'] = \sprintf(parent::IDENTIFIER, (string) $relatedStart->id);
-        }
-
-        $template->setData(array_merge($template->getData(), $arrTemplate));
+        $template->set('carousel_id', $this->getCarouselHtmlId($model));
 
         return $template->getResponse();
     }
