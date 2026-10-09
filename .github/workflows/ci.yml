@@ -24,7 +24,7 @@ jobs:
                 uses: actions/checkout@v4
 
             -   name: Install ecs
-                run: composer update --working-dir=tools/ecs --no-interaction --no-progress
+                run: composer update --working-dir=tools/ecs --no-interaction --no-progress 2> ecs-install.log || { echo "::error::$(tail -c 3000 ecs-install.log | tr '\n' ' ')"; exit 1; }
 
             -   name: Check the coding style
                 run: php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --output-format=checkstyle | cs2pr
