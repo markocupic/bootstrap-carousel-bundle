@@ -26,8 +26,7 @@ jobs:
                 run: composer update --working-dir=tools/ecs --no-interaction --no-progress
 
             -   name: Check the coding style
-                run: php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --no-progress-bar --no-ansi > ecs.log 2>&1 || { echo "::error::$(tail -c 3500 ecs.log | tr '
-' '|')"; exit 1; }
+                run: bash ecs-debug.sh
 
     tests:
         name: PHP ${{ matrix.php }}${{ matrix.dependencies == 'lowest' && ' --prefer-lowest' || '' }}
