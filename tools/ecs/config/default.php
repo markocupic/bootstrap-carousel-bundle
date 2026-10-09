@@ -27,4 +27,4 @@ return ECSConfig::configure()
     ->withConfiguredRule(HeaderCommentFixer::class, [
         'header' => "This file is part of Contao Bootstrap Carousel Bundle.\n\n(c) Marko Cupic <m.cupic@gmx.ch>\n@license MIT\nFor the full copyright and license information,\nplease view the LICENSE file that was distributed with this source code.\n@link https://github.com/markocupic/bootstrap-carousel-bundle",
     ])
-    ->withCache(sys_get_temp_dir() . '/ecs/markocupic/contao-schuldienste-theme');
+    ->withCache(sys_get_temp_dir() . '/ecs/markocupic/bootstrap-carousel-bundle');

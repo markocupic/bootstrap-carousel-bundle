@@ -32,7 +32,7 @@
     },
     "require-dev": {
         "contao/manager-plugin": "^2.0",
-        "markocupic/easy-coding-standard": "^13.0"
+        "contao/test-case": "^5.3 || ^6.0"
     },
     "conflict": {
         "contao/manager-plugin": "<2.0 || >=3.0"
@@ -43,6 +43,11 @@
     "autoload": {
         "psr-4": {
             "Markocupic\\BootstrapCarouselBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Markocupic\\BootstrapCarouselBundle\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -57,8 +62,9 @@
         }
     },
     "scripts": {
-        "cs-fixer": "@php tools/ecs/vendor/bin/ecs check config/ contao/ src/ tests/ --config tools/ecs/config.php --fix --ansi",
-        "phpstan": "@php tools/phpstan/vendor/bin/phpstan analyse src tests --level 9",
-        "unit-tests": "@php tools/phpunit/vendor/bin/phpunit -c tools/phpunit/phpunit.xml.dist"
+        "cs-fixer": "@php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --fix --ansi",
+        "cs-check": "@php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --ansi",
+        "unit-tests": "@php vendor/bin/phpunit --colors=always",
+        "phpstan": "@php tools/phpstan/vendor/bin/phpstan analyse src tests --level 9"
     }
 }
