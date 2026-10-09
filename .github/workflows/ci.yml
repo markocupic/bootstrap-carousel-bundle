@@ -27,7 +27,7 @@ jobs:
                 run: composer update --working-dir=tools/ecs --no-interaction --no-progress 2> ecs-install.log || { echo "::error::$(tail -c 3000 ecs-install.log | tr '\n' ' ')"; exit 1; }
 
             -   name: Check the coding style
-                run: php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --output-format=checkstyle | cs2pr
+                run: php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --no-progress-bar > ecs.log 2>&1 || { echo "::error::$(tail -c 3500 ecs.log | tr '\n' ' ')"; exit 1; }
 
     tests:
         name: PHP ${{ matrix.php }}${{ matrix.dependencies == 'lowest' && ' --prefer-lowest' || '' }}
