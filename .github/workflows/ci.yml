@@ -18,7 +18,6 @@ jobs:
                 with:
                     php-version: 8.4
                     coverage: none
-                    tools: cs2pr
 
             -   name: Checkout
                 uses: actions/checkout@v4
@@ -27,7 +26,7 @@ jobs:
                 run: composer update --working-dir=tools/ecs --no-interaction --no-progress
 
             -   name: Check the coding style
-                run: php tools/ecs/vendor/bin/ecs check --config tools/ecs/config/default.php --no-progress-bar --output-format=checkstyle | cs2pr
+                run: composer cs-check
 
     tests:
         name: PHP ${{ matrix.php }}${{ matrix.dependencies == 'lowest' && ' --prefer-lowest' || '' }}
