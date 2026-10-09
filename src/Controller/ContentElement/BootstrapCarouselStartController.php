@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of Bootstrap Carousel Bundle.
+ * This file is part of Contao Bootstrap Carousel Bundle.
  *
  * (c) Marko Cupic <m.cupic@gmx.ch>
  * @license MIT
